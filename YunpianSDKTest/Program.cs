@@ -12,7 +12,7 @@ namespace YunpianSDKTest
         static void Main(string[] args)
         {
             //设置apikey
-            Config config = new Config("f59cbf10f66276c2658ae463ac40786a");
+            Config config = new Config("your apikey");
             Dictionary<string, string> data = new Dictionary<string, string>();
             Result result = null;
 
@@ -36,18 +36,18 @@ namespace YunpianSDKTest
             data.Add("text", "【yunpian】您的验证码是9981");
             result = sms.singleSend(data);
             Console.WriteLine(result);
-            // 发送模板短信
-            data.Clear();
-            string tpl_value = HttpUtility.UrlEncode(
-            HttpUtility.UrlEncode("#code#", Encoding.UTF8) + "=" +
-            HttpUtility.UrlEncode("1234", Encoding.UTF8) + "&" +
-            HttpUtility.UrlEncode("#company#", Encoding.UTF8) + "=" +
-            HttpUtility.UrlEncode("云片网", Encoding.UTF8), Encoding.UTF8);
-            data.Add("mobile", "14012341231,123,13012312312");
-            data.Add("tpl_value", tpl_value);
-            data.Add("tpl_id", "1");
-            result = sms.tplSingleSend(data);
-            Console.WriteLine(result);
+            // 发送模板短信(不推荐使用)
+            // data.Clear();
+            // string tpl_value = HttpUtility.UrlEncode(
+            // HttpUtility.UrlEncode("#code#", Encoding.UTF8) + "=" +
+            // HttpUtility.UrlEncode("1234", Encoding.UTF8) + "&" +
+            // HttpUtility.UrlEncode("#company#", Encoding.UTF8) + "=" +
+            // HttpUtility.UrlEncode("云片网", Encoding.UTF8), Encoding.UTF8);
+            // data.Add("mobile", "14012341231,123,13012312312");
+            // data.Add("tpl_value", tpl_value);
+            // data.Add("tpl_id", "1");
+            // result = sms.tplSingleSend(data);
+            // Console.WriteLine(result);
 
             // 发送批量短信
             data.Clear();
