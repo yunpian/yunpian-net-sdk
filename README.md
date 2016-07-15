@@ -25,6 +25,25 @@ namespace YunpianSDKTest
 {
     class Program
     {
+    /**
+     * 更多内容请参考 <url>https://www.yunpian.com/api2.0/howto.html</url>
+     */
+
+    /**
+     *
+     * 如您第一次使用云片网，强烈推荐先看云片网络设置教程 <url>https://blog.yunpian.com/?p=94</url>
+     *
+     * 使用说明
+     *
+     * 1、登陆 <url>http://www.yunpian.com/</url> 获取APIKEY
+     * 2、使用APIKEY生成Config
+     * 3、获取需要的操作类SmsOperator/UserOperator/TplOperator/FlowOperator/VoiceOperator
+     * 4、通过Result来接收返回值.具体可参考示例
+     *
+     * 返回值参考
+     * <url>https://www.yunpian.com/api2.0/sms.html</url>
+     * <url>https://www.yunpian.com/api2.0/record.html</url>
+     */
         static void Main(string[] args)
         {
             //设置apikey
@@ -53,7 +72,7 @@ namespace YunpianSDKTest
             result = sms.singleSend(data);
             Console.WriteLine(result);
 
-            // 发送模板短信(不推荐使用)
+            // （这个是模板接口发送，会因为一些特殊字符产生编码问题导致发送失败，不推荐使用）
             //data.Clear();
             //string tpl_value = HttpUtility.UrlEncode(
             //HttpUtility.UrlEncode("#code#", Encoding.UTF8) + "=" +
@@ -66,39 +85,39 @@ namespace YunpianSDKTest
             //result = sms.tplSingleSend(data);
             //Console.WriteLine(result);
 
-            // 发送批量短信
-            data.Clear();
-            data.Add("mobile", "14012341231,123,13012312312");
-            data.Add("text", "【yunpian】您的验证码是9981");
-            result = sms.batchSend(data);
-            Console.WriteLine(result);
+            // （批量发送的接口耗时比单号码发送长，如果需要更高并发速度，推荐使用single_send/tpl_single_send）
+            //data.Clear();
+            //data.Add("mobile", "14012341231,123,13012312312");
+            //data.Add("text", "【yunpian】您的验证码是9981");
+            //result = sms.batchSend(data);
+            //Console.WriteLine(result);
             // 发送个性化短信
-            data.Clear();
-            data.Add("mobile", "14022341231,123,13112312312,13112312312");
-            data.Add("text", "【yunpian】您的验证码是9981,【yunpian】您的验证码是1981,【yunpian】您的验证码是9921,【yunpian】您的验证码是9981");
-            result = sms.multiSend(data);
-            Console.WriteLine(result);
+            //data.Clear();
+            //data.Add("mobile", "14022341231,123,13112312312,13112312312");
+            //data.Add("text", "【yunpian】您的验证码是9981,【yunpian】您的验证码是1981,【yunpian】您的验证码是9921,【yunpian】您的验证码是9981");
+            //result = sms.multiSend(data);
+            //Console.WriteLine(result);
 
             // 发送语音
-            VoiceOperator voice = new VoiceOperator(config);
-            data.Clear();
-            data.Add("code", "1421");
-            data.Add("mobile", "13012312312");
-            result = voice.send(data);
-            Console.WriteLine(result);
+            // VoiceOperator voice = new VoiceOperator(config);
+            // data.Clear();
+            // data.Add("code", "1421");
+            // data.Add("mobile", "13012312312");
+            // result = voice.send(data);
+            // Console.WriteLine(result);
 
             // 发送流量
-            FlowOperator flow = new FlowOperator(config);
-            data.Clear();
-            result = flow.getPackage(data);
-            Console.WriteLine(result);
+            // FlowOperator flow = new FlowOperator(config);
+            // data.Clear();
+            // result = flow.getPackage(data);
+            // Console.WriteLine(result);
 
-            data.Clear();
-            data.Add("sn", "1008601");
-            data.Add("mobile", "18712341234");
-            result = flow.recharge(data);
-            Console.WriteLine(result);
-            Console.ReadLine();
+            // data.Clear();
+            // data.Add("sn", "1008601");
+            // data.Add("mobile", "18712341234");
+            // result = flow.recharge(data);
+            // Console.WriteLine(result);
+            // Console.ReadLine();
 
         }
     }
