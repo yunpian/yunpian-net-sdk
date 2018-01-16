@@ -1,6 +1,8 @@
 
 # SDK使用指南
 
+推荐新版 [yunpian-csharp-sdk](https://github.com/yunpian/yunpian-csharp-sdk)
+
 ---
 ## C \#
 ### 添加依赖包
